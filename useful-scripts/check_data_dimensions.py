@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 """
-Check the temperature data array dimensions
+Check the temperature data array dimensions # could be other variable
 """
 import xarray as xr
 import xcdat as xc
 import numpy as np
 
-inputFilePath = '/Users/paul.smith/obs4MIPs-cmor-tables/inputs/NOAA-NCEI/GLODAP-2-2016b/GLODAPv2.2016c.temperature.nc'
-inputVarName = 'temperature'
+inputFilePath = '' # your local file path to the relevant NetCDF file
+inputVarName = 'temperature' # the variable you want to check
 
 print("="*70)
 print("DATA ARRAY DIMENSION CHECK")
