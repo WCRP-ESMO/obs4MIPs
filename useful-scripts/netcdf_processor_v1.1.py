@@ -161,10 +161,10 @@ def main():
     ## Main function - example usage with a REF dataset choose your values  
 
     # Example configuration enter REF dataset info here
-    input_file = "/Users/paul.smith/obs4MIPs-cmor-tables/inputs/DWD/OBS_ESACCI-CLOUD_sat_AVHRR-AMPM-fv3.0_Amon_clt_198201-201612.nc"  # Change to your input file
-    output_file = "/Users/paul.smith/obs4MIPs-cmor-tables/inputs/DWD/OBS_ESACCI-CLOUD_sat_AVHRR-AMPM-fv3.0_Amon_cltstd_198201-201612.nc"  # Change to your output file
-    source_variable = "clt"  # Change to your REF variable name
-    new_variable_name = "clt_std"  # Your chosen name for the new REF uncertainty variable
+    input_file = "xx"  # Change to your local input NetCDF file
+    output_file = "xx"  # Change to your output file
+    source_variable = "clt"  # Change to your REF variable name e.g. clt
+    new_variable_name = "clt_std"  # Your chosen name for the new REF uncertainty variable e.g. clt_std
     stat_function = "std"  # Options: 'std', 'var', 'min', 'max', 'median' NOTE: only the useful uncertainties might need more adding
     
     # Check if input file exists - careful with filenames - .nc REF filenames based on obs4MIPs are long! 
