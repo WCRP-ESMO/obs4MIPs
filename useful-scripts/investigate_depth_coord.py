@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 """
-Investigate the depth coordinate in detail
+Investigate the depth coordinate in detail of the NOAA-NCEI GLODAP-2-2016b dataset, but could be adapted for others
 """
 import xarray as xr
 import xcdat as xc
 import numpy as np
 
-inputFilePath = '/Users/paul.smith/obs4MIPs-cmor-tables/inputs/NOAA-NCEI/GLODAP-2-2016b/GLODAPv2.2016c.temperature.nc'
+inputFilePath = '' # add the local file path to the relevant NetCDF file
 
 print("="*70)
 print("DETAILED DEPTH COORDINATE INVESTIGATION")
