@@ -153,8 +153,8 @@ def main():
     ## Main function - example usage with a REF dataset 
     
     # Example configuration
-    input_file = "/Users/paul.smith/obs4MIPs-cmor-tables/inputs/DWD/OBS_ESACCI-CLOUD_sat_AVHRR-AMPM-fv3.0_Amon_clt_198201-201612.nc"  # Change to your input file location
-    output_file = "/Users/paul.smith/obs4MIPs-cmor-tables/inputs/DWD/OBS_ESACCI-CLOUD_sat_AVHRR-AMPM-fv3.0_Amon_cltSem_198201-201612.nc"  # Change to your output file location (can be different) 
+    input_file = "xx"  # Change to your input NetCDF file location
+    output_file = "xx"  # Change to your output file location (can be different) 
     source_variable = "clt"  # Change to your variable name 
     new_variable_name = "clt_sem"  # Your chosen name for the new variable
     stat_function = "sem"  # Options: 'std' (standard deviation), 'sem' (standard error of mean)
