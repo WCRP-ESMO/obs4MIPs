@@ -1,0 +1,57 @@
+name: Mkdocs build
+
+on:
+  push:
+    branches: [mkdocs_cmip]
+    paths:
+      - 'docs/**'
+      - 'mkdocs/**'
+
+  # Run workflow manually from actions tab.
+  workflow_dispatch:
+    
+jobs:
+  build:
+    # Specify an OS for the runner
+    runs-on: ubuntu-latest
+
+    #Define steps
+    steps:
+
+      # Firstly, checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      # Set up Python env
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      # Install dependencies
+      - name: Install Python dependencies
+        run: |
+            pip install -r mkdocs\requirements.txt
+
+      - name: Build documentation
+        run: |
+          mkdocs build -d gh-pages -f mkdocs/mkdocs.yml
+
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: gh-pages
+
+   # Deployment job
+  deploy:
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write  
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5         

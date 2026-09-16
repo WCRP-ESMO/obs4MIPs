@@ -1,0 +1,27 @@
+# Custom Navigation Links
+# =======================
+# Links are inserted directly into the navigation.
+# Use 'category' to group links under a heading.
+
+links:
+  # Direct links (no category - appear at root level)
+  # - title: "Essential Model Documentation"
+  #   url: "https://emd.mipcvs.dev/docs/"
+
+  # - title: "CVs Constants"
+  #  url: "https://constants.mipcvs.dev/docs/"
+
+  # - title: "CVs CMIP7"
+  #   url: "https://cmip7.mipcvs.dev/docs/"
+  - title: "ODS2.6.1 Data specification"
+    url: "https://doi.org/10.5281/zenodo.11500473"
+
+  # Categorized links
+  - title: "ESMO Website"
+    url: "https://wcrp-esmo.org/"
+
+  - title: "WCRP"
+    url: "https://www.wcrp-climate.org/"
+
+  #- title: "GitHub issue helper"
+  #  url: "resources/GitHub_issue_helper.html"
