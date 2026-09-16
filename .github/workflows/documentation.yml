@@ -2,7 +2,7 @@ name: Mkdocs build
 
 on:
   push:
-    branches: [mkdocs_cmip]
+    branches: [main]
     paths:
       - 'docs/**'
       - 'mkdocs/**'
@@ -29,7 +29,8 @@ jobs:
       # Install dependencies
       - name: Install Python dependencies
         run: |
-            pip install -r mkdocs\requirements.txt
+            pip install mkdocs-shadcn
+          # -r mkdocs/requirements.txt
 
       - name: Build documentation
         run: |
