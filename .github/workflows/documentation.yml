@@ -39,7 +39,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: gh-pages
+          path: mkdocs/gh-pages
 
    # Deployment job
   deploy:
