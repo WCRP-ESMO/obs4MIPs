@@ -46,4 +46,8 @@ inclusion in obs4MIPs, please complete the [inclusion proposal form](https://bit
 - how-to guides - proposal and airtable links
 - examples - [inputs folder](https://github.com/WCRP-ESMO/obs4MIPs-cmor-tables/tree/master/inputs) 
 - other repos: will be moving to using [obs4MIPs CVs](https://github.com/WCRP-ESMO/obs4MIPs_CVs)
+- proposal timeline info - workflow overview. 
+- capturing issues with data preperation, using CMOR
+- esgf publication steps
 - diagram/ flow on QA/QC process
+- list of datasets on [NCAR website](https://climatedataguide.ucar.edu/climate-data/obs4mips-observations-model-intercomparisons-project)

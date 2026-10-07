@@ -13,5 +13,5 @@ mkdocs serve -f mkdocs/mkdocs.yml
 ```
 
 ### References
-<!-- initially copied the mkdocs.yml and stylesheets from https://github.com/WCRP-CMIP/cmip7-guidance/tree/docs 
-to align look and feel -->
+Initially copied the mkdocs.yml and stylesheets from https://github.com/WCRP-CMIP/cmip7-guidance/tree/docs 
+to align look and feel.
