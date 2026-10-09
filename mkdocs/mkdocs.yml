@@ -8,19 +8,15 @@ site_description: Documentation for obs4MIPs proposals.
 site_author: WCRP-ESMO
 
 docs_dir: ../docs
-site_dir: site
+# site_dir: site
 use_directory_urls: true  # Creates clean URLs like /page/ instead of /page.html
 
 # Theme configuration
 theme:
   name: shadcn
-  # custom_dir: overrides
   # Must be a dict, not null to avoid a bug in shadcn katex
   katex_options: {}
-  # palette:
-  #   primary: cyan
-  #   accent: lime
-  # show_stargazers: false
+  show_stargazers: false
   favicon: assets/favicon.svg
   icon: assets/obs4MIPs_esmo.png
 
@@ -30,8 +26,24 @@ plugins:
   - search:
       lang: en
       separator: '[\s\-\.]+'
-  # - bibtex:
-  #     bib_file: "../docs/references.bib"
+
+nav:
+  - obs4MIPS:
+      - index.md
+  - How to Guides:
+      - How to submit: https://scribehow.com/o/hdCeWZbPTLql5q8a68DPDg/viewer/How_to_Submit_an_obs4MIPs_Dataset_Inclusion_Proposal__gBJ1WhA_TUWMgb2bzhS7EA
+      - How to Navigate: 20_how-to-guides/guides.md
+  - Input files:
+      - Overview: 30_data/overview.md
+      # files from repo? this will become old?
+      - inputs: https://github.com/WCRP-ESMO/obs4MIPs-cmor-tables/tree/master/inputs
+  - More Tools:
+    - CMOR: 80_drafts/cmor.md
+    - CV's: 80_drafts/cv_s.md
+    - QA/QC: 80_drafts/qa_qc.md
+  - Additional Resources:
+    - ESMO Website: https://wcrp-esmo.org/
+    - WCRP: https://www.wcrp-climate.org/
 
 extra:
   generator: false
@@ -41,8 +53,6 @@ extra_css:
 
 extra_javascript:
   - stylesheets/custom.js
-  - stylesheets/embed.js
-  # - https://unpkg.com/mermaid@10/dist/mermaid.min.js
 
 markdown_extensions:
   - abbr #TODO: check that it is okay to add this
@@ -52,21 +62,14 @@ markdown_extensions:
   - footnotes
   - md_in_html
   - tables
-  # - toc:
-  #     permalink: true
-  #     toc_depth: 3
-  # - pymdownx.details
-  # - pymdownx.highlight:
-  #     anchor_linenums: true
-  #     css_class: codehilite
-  # - pymdownx.inlinehilite
-  # - pymdownx.arithmatex:
-  #     generic: true
-  # - pymdownx.superfences:
-  #     custom_fences:
-  #       - name: mermaid
-  #         class: mermaid
-  #         format: !!python/name:pymdownx.superfences.fence_code_format
+  - toc:
+      permalink: true
+      # toc_depth: 3
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   # - pymdownx.tabbed:
   #     alternate_style: true
   # - pymdownx.tasklist:

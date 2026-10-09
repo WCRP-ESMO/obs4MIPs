@@ -1,4 +1,4 @@
-// Guidance and Documentation - Custom Scripts for shadcn theme
+// Custom Scripts for shadcn theme
 
 // Configuration
 const CONFIG = {
@@ -38,52 +38,6 @@ function detectBasePath() {
   return '/';
 }
 
-// Load custom links from links.yml
-async function loadCustomLinks() {
-  try {
-    // Use MkDocs base_url to get correct path from any page depth
-    const baseUrl = detectBasePath();
-    const paths = [
-      baseUrl + 'links.yml',
-      baseUrl + '/links.yml',
-      './links.yml',
-      '/links.yml'
-    ];
-    let text = null;
-    
-    for (const path of paths) {
-      try {
-        const response = await fetch(path);
-        if (response.ok) {
-          text = await response.text();
-          break;
-        }
-      } catch (e) {}
-    }
-    
-    if (!text) return;
-    
-    const links = [];
-    const lines = text.split('\n');
-    let currentLink = null;
-    
-    for (const line of lines) {
-      const titleMatch = line.match(/^\s*-?\s*title:\s*["']?(.+?)["']?\s*$/);
-      const urlMatch = line.match(/^\s*url:\s*["']?(.+?)["']?\s*$/);
-      
-      if (titleMatch) {
-        if (currentLink && currentLink.url) links.push(currentLink);
-        currentLink = { title: titleMatch[1] };
-      } else if (urlMatch && currentLink) {
-        currentLink.url = urlMatch[1];
-      }
-    }
-    if (currentLink && currentLink.url) links.push(currentLink);
-    
-    CONFIG.customLinks = links;
-    addCustomLinks();
-  } catch (e) {}
-}
 
 // Run on load and after delay
 document.addEventListener('DOMContentLoaded', function() {
@@ -97,9 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function init() {
   setupHeaderControls();
   setupCollapsibleNav();
-  addCustomLinks();
   updateFooter();
-  addVersionSelector();
   setupHeaderAnchors();
   setupTabbedContent();
   processDetailsMarkdown();
@@ -181,39 +133,39 @@ function processDetailsMarkdown() {
 // COPY HANDLER (intercepts copy events)
 // ============================================
 
-function appendCopyFooter(content) {
-  const currentUrl = window.location.href.split('?')[0];
-  const embedUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + 'embed=true';
-  const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0] + ' UTC';
+// function appendCopyFooter(content) {
+//   const currentUrl = window.location.href.split('?')[0];
+//   const embedUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + 'embed=true';
+//   const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0] + ' UTC';
   
-  return content + `
+//   return content + `
 
----
-This content was copied from ${currentUrl} at ${timestamp}.
-Use of content is protected by a CC-BY-4.0 licence and external use is allowed at your own risk.
+// ---
+// This content was copied from ${currentUrl} at ${timestamp}.
+// Use of content is protected by a CC-BY-4.0 licence and external use is allowed at your own risk.
 
-If you wish to embed a live version of this page please use: ${embedUrl}
+// If you wish to embed a live version of this page please use: ${embedUrl}
 
-Iframe example:
-<iframe src="${embedUrl}" width="100%" height="600" frameborder="0"></iframe>
-`;
-}
+// Iframe example:
+// <iframe src="${embedUrl}" width="100%" height="600" frameborder="0"></iframe>
+// `;
+// }
 
-function setupGlobalCopyHandler() {
-  if (window.copyHandlerSetup) return;
-  window.copyHandlerSetup = true;
+// function setupGlobalCopyHandler() {
+//   if (window.copyHandlerSetup) return;
+//   window.copyHandlerSetup = true;
   
-  document.addEventListener('copy', function(e) {
-    const selection = window.getSelection().toString();
-    if (selection && selection.length > 100) {
-      e.preventDefault();
-      e.clipboardData.setData('text/plain', appendCopyFooter(selection));
-    }
-  }, true);
-}
+//   document.addEventListener('copy', function(e) {
+//     const selection = window.getSelection().toString();
+//     if (selection && selection.length > 100) {
+//       e.preventDefault();
+//       e.clipboardData.setData('text/plain', appendCopyFooter(selection));
+//     }
+//   }, true);
+// }
 
 // Install copy handler immediately
-setupGlobalCopyHandler();
+// setupGlobalCopyHandler();
 
 // ============================================
 // HEADER CONTROLS
@@ -307,44 +259,6 @@ function setupCollapsibleNav() {
     item.style.visibility = 'visible';
     item.style.opacity = '1';
   });
-}
-
-// ============================================
-// CUSTOM LINKS
-// ============================================
-
-function addCustomLinks() {
-  if (!CONFIG.customLinks || CONFIG.customLinks.length === 0) return;
-  if (document.querySelector('.custom-links-section')) return;
-  
-  // Find sidebar content area
-  const sidebarContent = document.querySelector('[data-slot="sidebar-content"]');
-  
-  
-  if (!sidebarContent) return;
-
-  const basePath = detectBasePath();
-  const section = document.createElement('div');
-  section.className = 'custom-links-section';
-  section.innerHTML = `
-    <div class="custom-links-title">Additional Resources</div>
-    <div class="custom-links-list">
-      ${CONFIG.customLinks.map(link => {
-        const isExternal = /^https?:\/\//.test(link.url);
-        // Resolve internal (relative) links against the site root so they work
-        // from any page depth; external links are used as-is and open in a new tab.
-        const href = isExternal ? link.url : basePath + link.url.replace(/^\.?\//, '');
-        const attrs = isExternal ? ' target="_blank" rel="noopener"' : '';
-        return `
-        <a href="${href}" class="custom-link"${attrs}>
-          <span>${link.title}</span>
-        </a>
-      `;
-      }).join('')}
-    </div>
-  `;
-
-  sidebarContent.appendChild(section);
 }
 
 // ============================================
@@ -465,51 +379,6 @@ function updateFooter() {
   }
 }
 
-// ============================================
-// VERSION SELECTOR
-// ============================================
-
-function addVersionSelector() {
-  if (document.querySelector('.version-selector')) return;
-  
-  const baseUrl = detectBasePath();
-  
-  fetch(baseUrl + '../versions.json')
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(versions => {
-      if (!versions?.length) return;
-
-      const pathParts = window.location.pathname.split('/').filter(p => p);
-      const current = versions.find(v => 
-        pathParts.includes(v.version) || v.aliases?.some(a => pathParts.includes(a))
-      );
-
-      const dropdown = document.createElement('div');
-      dropdown.className = 'version-selector';
-      dropdown.innerHTML = `
-        <select id="version-select">
-          ${versions.map(v => `
-            <option value="${v.version}" ${current?.version === v.version ? 'selected' : ''}>
-              ${v.aliases?.includes('latest') ? `${v.version} (latest)` : v.version}
-            </option>
-          `).join('')}
-        </select>
-      `;
-
-      const header = document.querySelector('header');
-      const target = header?.querySelector('.ml-auto') || header;
-      target?.insertBefore(dropdown, target.firstChild);
-
-      dropdown.querySelector('select').addEventListener('change', e => {
-        const path = window.location.pathname;
-        const pattern = current ? `(${current.version}|${current.aliases?.join('|') || ''})` : '';
-        window.location.href = pattern 
-          ? path.replace(new RegExp(`/${pattern}/`), `/${e.target.value}/`)
-          : baseUrl + e.target.value + '/';
-      });
-    })
-    .catch(() => {});
-}
 
 // Export for debugging
 window.EMDCustom = { init, CONFIG };
