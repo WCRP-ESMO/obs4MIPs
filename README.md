@@ -10,7 +10,7 @@
 
 The obs4MIPs repository content was originally developed by climate and computer scientists from the Program for Climate Model Diagnosis and Intercomparison ([PCMDI](https://pcmdi.llnl.gov/)) at Lawrence Livermore National Laboratory ([LLNL](https://www.llnl.gov/)) with assistance from the [UK MetOffice](https://www.metoffice.gov.uk/), the UK Centre for Environmental Data Analysis ([CEDA](https://www.ceda.ac.uk/)), The European Space Agency ([ESA](https://www.esa.int/)), The Earth System Model eValuation Tool ([ESMValGroup](https://esmvaltool.org/)), Deutscher Wetterdienst ([DWD](https://www.dwd.de))) and other members of the international science community. 
 
-The obs4MIPs project comes under the auspices of the the World Climate Research Program [WCRP](https://www.wcrp-climate.org/), Earth System Modelling and Observations [ESMO](https://www.wcrp-climate.org/esmo-overview) core project. Administration of obs4MIPs is provided by the Coupled Model Intercomparison Project International Project Office [CMIP IPO](https://wcrp-cmip.org/project-office/) hosted by the European Space Agency [ESA](https://www.esa.int/).
+The obs4MIPs project comes under the auspices of the the World Climate Research Program [WCRP](https://www.wcrp-climate.org/), Earth System Modelling and Observations [ESMO](https://www.wcrp-esmo.org/) core project. Administration of obs4MIPs is provided by the Coupled Model Intercomparison Project International Project Office [CMIP IPO](https://wcrp-cmip.org/project-office/) hosted by the European Space Agency [ESA](https://www.esa.int/).
 
 <p>
     <img src="https://pcmdi.github.io/assets/PCMDI/100px-PCMDI-Logo-NoText-square-png8.png"
